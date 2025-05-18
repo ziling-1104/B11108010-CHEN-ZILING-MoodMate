@@ -1,33 +1,4 @@
-const modelURL = "./model.json";
-const metadataURL = "./metadata.json";
 
-let model, webcam, maxPredictions;
-
-async function init() {
-    const suggestion = document.getElementById("suggestion");
-    suggestion.innerHTML = "正在載入模型...";
-
-    try {
-        model = await tmImage.load(modelURL, metadataURL);
-        maxPredictions = model.getTotalClasses();
-
-        suggestion.innerHTML = "正在啟動攝影機...";
-        const flip = true;
-        webcam = new tmImage.Webcam(400, 400, flip);
-
-        try {
-            await webcam.setup();
-            await webcam.play();
-            document.getElementById("webcam-container").appendChild(webcam.canvas);
-            suggestion.innerHTML = "偵測中...";
-            window.requestAnimationFrame(loop);
-        } catch (cameraError) {
-            console.error("攝影機錯誤:", cameraError);
-            suggestion.innerHTML = "無法啟動攝影機。請確認權限與裝置連線。";
-        }
-    } catch (modelError) {
-        console.error("模型載入錯誤:", modelError);
-        
 let model, webcam, maxPredictions;
 
 async function init() {
