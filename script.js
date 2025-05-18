@@ -27,7 +27,32 @@ async function init() {
         }
     } catch (modelError) {
         console.error("模型載入錯誤:", modelError);
-        suggestion.innerHTML = "無法載入模型。請確認網路正常並重新整理。";
+        
+let model, webcam, maxPredictions;
+
+async function init() {
+    const suggestion = document.getElementById("suggestion");
+    suggestion.innerHTML = "正在載入模型...";
+
+    try {
+        const URL = "https://teachablemachine.withgoogle.com/models/MbSMHGKtH/";
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+        
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        suggestion.innerHTML = "正在啟動攝影機...";
+        const flip = true;
+        webcam = new tmImage.Webcam(400, 400, flip);
+        await webcam.setup();
+        await webcam.play();
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        suggestion.innerHTML = "偵測中...";
+        window.requestAnimationFrame(loop);
+    } catch (error) {
+        console.error("錯誤:", error);
+        suggestion.innerHTML = "無法載入模型或啟動攝影機。請確認網路正常並重新整理。";
     }
 }
 
