@@ -1,4 +1,5 @@
-const URL = "https://teachablemachine.withgoogle.com/models/MbSMHGKtH/";
+const modelURL = "./model.json";
+const metadataURL = "./metadata.json";
 const modelURL = URL + "model.json";
 const metadataURL = URL + "metadata.json";
 
