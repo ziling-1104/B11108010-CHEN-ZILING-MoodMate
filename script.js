@@ -1,7 +1,5 @@
 const modelURL = "./model.json";
 const metadataURL = "./metadata.json";
-const modelURL = URL + "model.json";
-const metadataURL = URL + "metadata.json";
 
 let model, webcam, maxPredictions;
 
