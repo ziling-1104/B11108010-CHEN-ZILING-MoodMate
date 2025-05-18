@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>LoveMood+ 女友生氣偵測器</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>LoveMood+ 女友生氣偵測器</h1>
+  <div id="webcam-container"></div>
+  <div id="result">
+    <div id="emoji">🙂</div>
+    <div id="suggestion">請點擊下方按鈕開始偵測</div>
+  </div>
+  <button onclick="init()">啟動偵測</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

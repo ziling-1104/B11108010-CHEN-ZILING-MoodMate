@@ -1,0 +1,26 @@
+body {
+  font-family: Arial;
+  background: linear-gradient(to right, #ffe6e6, #fff0f5);
+  text-align: center;
+  padding: 2rem;
+}
+video {
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+#result {
+  margin-top: 1.5rem;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(255,105,135,0.2);
+}
+#emoji {
+  font-size: 3em;
+}
+#suggestion {
+  font-size: 1.1em;
+  margin-top: 1rem;
+}
