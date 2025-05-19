@@ -91,7 +91,7 @@ async function predict() {
   emoji.innerHTML = resultEmoji;
   suggestion.innerHTML = resultText;
 
-  // 防止重複播放語音
+  // 播放語音 & 文字轉語音
   if (isSpeakingEnabled && resultText !== lastSpokenText) {
     if (currentAudio && !currentAudio.paused) currentAudio.pause();
     const audios = audioMap[className];
@@ -100,6 +100,12 @@ async function predict() {
       currentAudio.currentTime = 0;
       currentAudio.play();
     }
+
+    const speak = new SpeechSynthesisUtterance(resultText);
+    speak.lang = 'zh-TW';
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(speak);
+
     lastSpokenText = resultText;
   }
 
@@ -127,10 +133,5 @@ function getColorByClass(className) {
 }
 
 window.addEventListener("click", () => {
-  window.speechSynthesis.cancel(); // 確保語音能觸發
+  window.speechSynthesis.cancel(); // 為了觸發瀏覽器語音權限
 });
-
-    const speak = new SpeechSynthesisUtterance(suggestion.innerText);
-    speak.lang = 'zh-TW';
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(speak);
