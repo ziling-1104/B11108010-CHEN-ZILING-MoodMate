@@ -91,7 +91,6 @@ async function predict() {
   emoji.innerHTML = resultEmoji;
   suggestion.innerHTML = resultText;
 
-  // 播放語音 & 文字轉語音
   if (isSpeakingEnabled && resultText !== lastSpokenText) {
     if (currentAudio && !currentAudio.paused) currentAudio.pause();
     const audios = audioMap[className];
@@ -133,5 +132,5 @@ function getColorByClass(className) {
 }
 
 window.addEventListener("click", () => {
-  window.speechSynthesis.cancel(); // 為了觸發瀏覽器語音權限
+  window.speechSynthesis.cancel();
 });
