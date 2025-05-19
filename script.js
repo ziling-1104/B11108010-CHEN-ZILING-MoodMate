@@ -8,6 +8,7 @@ let lastUpdateTime = 0;
 const updateInterval = 3000;
 let currentAudio = null;
 
+// 每個情緒對應 3 段 mp3
 const audioMap = {
   happy: [new Audio("happy_1.mp3"), new Audio("happy_2.mp3"), new Audio("happy_3.mp3")],
   angry: [new Audio("angry_1.mp3"), new Audio("angry_2.mp3"), new Audio("angry_3.mp3")],
@@ -91,13 +92,15 @@ async function predict() {
   emoji.innerHTML = resultEmoji;
   suggestion.innerHTML = resultText;
 
-  // 防止重複播放語音
+  // ✅ 播放預錄語音 mp3（無 TTS）
   if (isSpeakingEnabled && resultText !== lastSpokenText) {
-    if (currentAudio && !currentAudio.paused) currentAudio.pause();
+    if (currentAudio && !currentAudio.paused) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
     const audios = audioMap[className];
     if (audios && audios.length > 0) {
       currentAudio = audios[Math.floor(Math.random() * audios.length)];
-      currentAudio.currentTime = 0;
       currentAudio.play();
     }
     lastSpokenText = resultText;
@@ -127,5 +130,5 @@ function getColorByClass(className) {
 }
 
 window.addEventListener("click", () => {
-  window.speechSynthesis.cancel(); // 確保語音能觸發
+  window.speechSynthesis.cancel(); // 防止瀏覽器延遲允許播放
 });
