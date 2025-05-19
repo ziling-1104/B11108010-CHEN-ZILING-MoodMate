@@ -134,4 +134,3 @@ window.addEventListener("click", () => {
     speak.lang = 'zh-TW';
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(speak);
-}
