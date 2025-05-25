@@ -1,4 +1,4 @@
-let model, camera, canvasCtx, faceMesh;
+let model, camera, faceMesh;
 let isSpeakingEnabled = true;
 let lastSpokenText = "";
 let currentAudio = null;
