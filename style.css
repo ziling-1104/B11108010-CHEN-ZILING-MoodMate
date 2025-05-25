@@ -177,18 +177,18 @@ button:hover {
   transition: height 0.3s ease;
 }
 
-.bar[data-emotion="happy"] { background-color: #ffc107; }
-.bar[data-emotion="angry"] { background-color: #ff6b6b; }
-.bar[data-emotion="tired"] { background-color: #6c757d; }
-.bar[data-emotion="neutral"] { background-color: #17a2b8; }
+.bar[data-emotion="happy"]   { background-color: #f9c74f; }
+.bar[data-emotion="angry"]   { background-color: #f94144; }
+.bar[data-emotion="tired"]   { background-color: #adb5bd; }
+.bar[data-emotion="neutral"] { background-color: #00b4d8; }
 
-/* ===== 聯絡方式 ===== */
+/* ===== 聯絡方式區塊 ===== */
 #contact {
   background: #f5f5f5;
   text-align: center;
 }
 
-/* ===== 響應式手機版 ===== */
+/* ===== 響應式樣式 ===== */
 @media (max-width: 768px) {
   .profile {
     flex-direction: column;
