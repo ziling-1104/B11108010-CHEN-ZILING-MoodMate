@@ -1,6 +1,6 @@
 let model, camera, faceMesh;
 let lastUpdateTime = 0;
-const updateInterval = 5000;
+const updateInterval = 8000;
 let isSpeakingEnabled = true;
 let lastSpokenText = "";
 let currentAudio = null;
@@ -87,9 +87,9 @@ function onResults(results) {
   const mouthOpen = Math.abs(bottomLip.y - topLip.y);
   const mouthCurve = rightMouth.y - leftMouth.y;
 
-  if (mouthOpen > 0.045) {
+  if (mouthOpen > 0.035) {
     updateEmotion("tired");
-  } else if (mouthCurve < -0.01) {
+  } else if (mouthCurve < -0.005) {
     updateEmotion("happy");
   } else {
     updateEmotion("neutral");
