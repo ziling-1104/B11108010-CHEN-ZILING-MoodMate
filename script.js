@@ -116,10 +116,12 @@ function updateEmotion(className) {
   }
 
   const time = new Date().toLocaleTimeString();
+
   const log = document.createElement("div");
   log.textContent = `[${time}] ${resultEmoji} ${resultText}`;
   log.style.color = getColorByClass(className);
   history.prepend(log);
+
 
 
 }
