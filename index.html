@@ -28,7 +28,7 @@
       <p>對數位行銷、社群經營與內容行銷特別感興趣，希望透過實習累積經驗，學習如何運用行銷策略創造價值。期待持續學習與成長，將創新思維與策略應用於市場，為品牌帶來實際影響力。</p>
     </section>
 
-    <!-- 作品集 -->
+    <!-- 專案區塊 -->
     <section id="projects">
       <h2>專業技能與作品集</h2>
       <div class="project-grid">
@@ -47,18 +47,26 @@
       </div>
     </section>
 
-    <!-- MoodMate+ 區塊 -->
+    <!-- MoodMate+ -->
     <section id="moodmate">
       <h2>MoodMate+ 戀愛情緒助理</h2>
+
+      <!-- Webcam -->
       <div id="webcam-container"></div>
+
+      <!-- 偵測結果與語音 -->
       <div id="result">
         <div id="emoji">🙂</div>
         <div id="suggestion">請點擊下方按鈕開始偵測</div>
       </div>
+
+      <!-- 控制按鈕 -->
       <div>
         <button onclick="init()">✨ 啟動戀愛助理</button>
         <button id="speech-toggle" onclick="toggleSpeech()">🔊 語音開啟</button>
       </div>
+
+      <!-- 歷史紀錄 -->
       <div id="history"></div>
     </section>
 
@@ -69,7 +77,7 @@
     </section>
   </main>
 
-  <!-- 外部 JS 模組 -->
+  <!-- JS 模組 -->
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
