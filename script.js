@@ -121,21 +121,13 @@ function updateEmotion(className) {
   log.style.color = getColorByClass(className);
   history.prepend(log);
 
-  emotionCounts[className]++;
-  updateChart();
+
 }
 
 function toggleSpeech() {
   isSpeakingEnabled = !isSpeakingEnabled;
   const button = document.getElementById("speech-toggle");
   button.innerText = isSpeakingEnabled ? "🔊 語音開啟" : "🔇 語音關閉";
-}
-
-function updateChart() {
-  for (const emotion in emotionCounts) {
-    const bar = document.querySelector(`.bar[data-emotion="${emotion}"]`);
-    if (bar) bar.style.height = `${emotionCounts[emotion] * 10}px`;
-  }
 }
 
 function getColorByClass(className) {
