@@ -1,41 +1,70 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <title>MoodMate+ Emotion Detector</title>
-  <style>
-    body { font-family: sans-serif; text-align: center; background-color: #f4f4f4; }
-    #emoji { font-size: 80px; margin-top: 20px; transition: transform 0.3s ease; }
-    #emoji.talking { transform: scale(1.2); }
-    #suggestion { font-size: 20px; margin: 10px 0; max-width: 80%; margin-inline: auto; }
-    #history { max-height: 200px; overflow-y: auto; margin-top: 10px; font-size: 14px; text-align: left; padding: 10px; }
-    .emoji-float { position: absolute; font-size: 30px; animation: float 4s linear forwards; }
-    @keyframes float { 0% { top: 100vh; opacity: 1; } 100% { top: -10vh; opacity: 0; } }
-    .bar { height: 20px; background: gray; margin: 5px auto; color: white; line-height: 20px; text-align: left; padding-left: 5px; max-width: 300px; }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>陳子陵的作品集｜MoodMate+</title>
+  <link rel="stylesheet" href="style_full_mixed_final.css" />
+  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
-  <h1>MoodMate+ 情緒偵測</h1>
-  <div id="webcam-container"></div>
-  <div id="emoji">❓</div>
-  <div id="suggestion">等待偵測中...</div>
-  <div id="history"></div>
-  <div>
-    <button id="speech-toggle" onclick="toggleSpeech()">🔊 語音開啟</button>
-    <button id="load-toggle" onclick="toggleLowLoad()">⚙️ 全功能模式</button>
-  </div>
-  <div id="chart">
-    <div class="bar" data-emotion="happy" style="background:#ff69b4"></div>
-    <div class="bar" data-emotion="angry" style="background:#ff4d4d"></div>
-    <div class="bar" data-emotion="tired" style="background:#999"></div>
-    <div class="bar" data-emotion="neutral" style="background:#666"></div>
-  </div>
+  <header>
+    <nav>
+      <a href="#about">關於我</a>
+      <a href="#projects">作品集</a>
+      <a href="#moodmate">MoodMate+</a>
+      <a href="#contact">聯絡方式</a>
+    </nav>
+  </header>
 
-  <!-- Teachable Machine & MediaPipe 相關 JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
-  <script src="app.js"></script>
+  <main>
+    <section id="about">
+      <div class="profile">
+        <img src="profile.jpg" alt="個人照片" class="profile-pic" />
+        <h1>陳子陵</h1>
+      </div>
+      <p>雖然主修企管，但對行銷充滿熱情，特別喜歡品牌行銷與市場策略。</p>
+    </section>
+
+    <section id="projects">
+      <h2>專業技能與作品集</h2>
+      <div class="project-grid">
+        <div class="project-card"><h3>品牌行銷</h3></div>
+        <div class="project-card"><h3>數位行銷</h3></div>
+        <div class="project-card"><h3>專案實作</h3></div>
+      </div>
+    </section>
+
+    <section id="moodmate">
+      <h2>MoodMate+ 戀愛情緒助理</h2>
+      <div id="webcam-container"></div>
+      <div id="result">
+        <div id="emoji">🙂</div>
+        <div id="suggestion">請點擊下方按鈕開始偵測</div>
+      </div>
+      <div>
+        <button onclick="init()">✨ 啟動戀愛助理</button>
+        <button id="speech-toggle" onclick="toggleSpeech()">🔊 語音開啟</button>
+      </div>
+      <div id="history"></div>
+      <h3>情緒次數統計</h3>
+      <div class="chart-bar"><div class="bar" data-emotion="happy" style="background:#ff69b4"></div></div>
+      <div class="chart-bar"><div class="bar" data-emotion="angry" style="background:#ff4d4d"></div></div>
+      <div class="chart-bar"><div class="bar" data-emotion="tired" style="background:#999"></div></div>
+      <div class="chart-bar"><div class="bar" data-emotion="neutral" style="background:#666"></div></div>
+    </section>
+
+    <section id="contact">
+      <h2>聯絡方式</h2>
+      <p>Email：a0903959590@gmail.com</p>
+    </section>
+  </main>
+
+  <!-- 外部模組 -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="script_full_mixed_final.js"></script>
 </body>
 </html>
