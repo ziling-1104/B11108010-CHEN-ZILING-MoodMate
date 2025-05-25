@@ -1,8 +1,10 @@
 let model, camera, faceMesh;
+let lastUpdateTime = 0;
+const updateInterval = 5000;
 let isSpeakingEnabled = true;
 let lastSpokenText = "";
 let currentAudio = null;
-let angryThreshold = 0.85;
+let angryThreshold = 0.75;
 let emotionCounts = { happy: 0, angry: 0, tired: 0, neutral: 0 };
 
 const suggestionPool = {
@@ -85,9 +87,9 @@ function onResults(results) {
   const mouthOpen = Math.abs(bottomLip.y - topLip.y);
   const mouthCurve = rightMouth.y - leftMouth.y;
 
-  if (mouthOpen > 0.065) {
+  if (mouthOpen > 0.045) {
     updateEmotion("tired");
-  } else if (mouthCurve < -0.015) {
+  } else if (mouthCurve < -0.01) {
     updateEmotion("happy");
   } else {
     updateEmotion("neutral");
@@ -95,6 +97,9 @@ function onResults(results) {
 }
 
 function updateEmotion(className) {
+  const now = Date.now();
+  if (now - lastUpdateTime < updateInterval && className !== 'angry') return;
+  lastUpdateTime = now;
   const emojiMap = { happy: "😊", angry: "😠", tired: "😴", neutral: "😐" };
   const emoji = document.getElementById("emoji");
   const suggestion = document.getElementById("suggestion");
